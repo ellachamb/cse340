@@ -13,7 +13,7 @@ body {
 
 #wrapper {
   margin: auto; 
-  width: 90%; 
+  width: 70%; 
   border: 3px solid rgb(32, 177, 255); 
   padding: 10px; 
   background-color: white;
@@ -26,7 +26,7 @@ a {
   color: black; 
 }
 
-ul {
+nav ul {
   list-style: none;
 }
 
@@ -59,6 +59,7 @@ nav ul{
 #hero {
   position: relative; 
   margin-bottom: 3rem; 
+  font-family: "Abril", 'Times New Roman', Times, serif;
 }
 
 #hero-image {
@@ -66,8 +67,58 @@ nav ul{
   align-items: center;
 }
 #highlight {
-  background-color: rgb(255, 255, 255, .5);
+  background-color: rgb(255, 255, 255, .7);
   position: absolute;
   top: 30%; 
   left: 5%; 
+}
+
+#highlight h2, h3 {
+  margin-left: 2rem;
+  margin-top: .7rem; 
+  color:rgb(60, 141, 255); 
+}
+
+#own-button {
+  margin: 1.5rem; 
+}
+
+.grid {
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+}
+
+.upgrade {
+  background-color: rgb(60, 141, 255);
+  padding: .4rem; 
+  border: 1.5px solid black; 
+  margin: .5rem; 
+}
+
+.upgrade img {
+  align-items: center;
+  margin: auto; 
+}
+
+.upgrade-grid {
+  text-align: center;
+  display: block; 
+}
+
+@media screen and (min-width: 640px) {
+
+#delorean {
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+}
+
+#reviews {
+  grid-column: 2;
+}
+
+#upgrades {
+  grid-column: 1;
+  grid-row: 1; 
+}
+
 }
