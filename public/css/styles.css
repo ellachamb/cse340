@@ -1,6 +1,73 @@
-/******* Change Box Model ***************/
+****** Change Box Model **************
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Libre+Baskerville&family=Lora&family=Mukta&display=swap');
+
+body {
+  background-image: url(/images/site/checkerboard.jpg)
+}
+
+#wrapper {
+  margin: auto; 
+  width: 90%; 
+  border: 3px solid rgb(32, 177, 255); 
+  padding: 10px; 
+  background-color: white;
+  border-radius: 15px;
+  font-family: "Libre Baskerville", 'Times New Roman', Times, serif;
+}
+
+a {
+  text-decoration: none;
+  color: black; 
+}
+
+ul {
+  list-style: none;
+}
+
+#top-header {
+  display: flex; 
+  padding-top: 1.3rem;
+}
+
+.siteName {
+  width: 50px; 
+  white-space: nowrap; 
+  font-size: 2rem;
+}
+
+#tools {
+  text-align: right;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+nav ul{
+  display: flex; 
+  text-align: center;
+  justify-content: space-around;
+  background-color: black;
+  color: white; 
+  padding: .5rem; 
+}
+
+#hero {
+  position: relative; 
+  margin-bottom: 3rem; 
+}
+
+#hero-image {
+  width: 100%; 
+  align-items: center;
+}
+#highlight {
+  background-color: rgb(255, 255, 255, .5);
+  position: absolute;
+  top: 30%; 
+  left: 5%; 
 }
