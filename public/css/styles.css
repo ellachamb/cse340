@@ -1,4 +1,28 @@
-****** Change Box Model **************
+/* General Styles: 
+- imports
+- box model
+- universal styles
+- header
+- navigation
+- body
+- footer
+Component styles: 
+- hero- home view
+-review- home view
+-add ons- home view
+-forms
+-classification view
+-detail view
+Media Query: 
+-general
+-header
+-navigation
+-hero home
+-review and add on
+-classification view
+-detail view*/
+
+/****** Change Box Model **************/
 *,
 *:before,
 *:after {
@@ -26,10 +50,6 @@ a {
   color: black; 
 }
 
-nav ul {
-  list-style: none;
-}
-
 #top-header {
   display: flex; 
   padding-top: 1.3rem;
@@ -48,12 +68,16 @@ nav ul {
 }
 
 nav ul{
-  display: flex; 
-  text-align: center;
-  justify-content: space-around;
+  list-style: none;
   background-color: black;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  padding: 1rem; 
+}
+
+nav a{
   color: white; 
-  padding: .5rem; 
 }
 
 #hero {
