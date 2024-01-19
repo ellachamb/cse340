@@ -30,7 +30,7 @@ Media Query:
 }
 
 body {
-  background-image: url(/images/site/checkerboard.jpg)
+  background-image: url(/images/site/small_check.jpg)
 }
 
 #wrapper {
@@ -133,21 +133,29 @@ nav a{
 
 @media screen and (min-width: 500px) {
 
-#delorean {
-  display: flex; 
-  flex-direction: row-reverse;
-}
+  #wrapper {
+    width: 85%; 
+  }
 
-#upgrades {
-  width: 100%; 
-}
+  #delorean {
+    display: flex; 
+    flex-direction: row-reverse;
+  }
 
-#reviews li {
-  margin: 1rem 0rem; 
-}
+  #upgrades {
+    width: 100%; 
+  }
 
-#reviews {
-  width: 100%; 
-}
+  #reviews li {
+    margin: 1rem 0rem; 
+  }
+
+  #reviews {
+    width: 100%; 
+  }
+
+  body {
+    background-image: url(/images/site/checkerboard.jpg)
+  }
 
 }
