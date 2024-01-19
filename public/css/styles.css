@@ -97,14 +97,17 @@ nav a{
   left: 5%; 
 }
 
-#highlight h2, h3 {
-  margin-left: 2rem;
-  margin-top: .7rem; 
-  color:rgb(60, 141, 255); 
+#highlight h3, p {
+  margin: 1rem 1.6rem; 
+  color:rgb(44, 58, 79); 
 }
 
 #own-button {
-  margin: 1.5rem; 
+  margin: 1.3rem; 
+}
+
+#own-button img {
+  width: 130px; 
 }
 
 .grid {
@@ -117,6 +120,7 @@ nav a{
   padding: .4rem; 
   border: 1.5px solid black; 
   margin: .5rem; 
+  max-height: 85px;
 }
 
 .upgrade img {
@@ -129,20 +133,31 @@ nav a{
   display: block; 
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 750px) {
 
 #delorean {
-  display: grid; 
-  grid-template-columns: 1fr 1fr;
-}
-
-#reviews {
-  grid-column: 2;
+  display: flex; 
+  flex-direction: row-reverse;
 }
 
 #upgrades {
-  grid-column: 1;
-  grid-row: 1; 
+  width: 100%; 
+}
+
+#reviews li {
+  margin: 1rem 0rem; 
+}
+
+#reviews {
+  width: 100%; 
+}
+
+#highlight img {
+  width: 100%; 
+}
+
+#highlight h3, p {
+  font-size: 1.5rem;
 }
 
 }
