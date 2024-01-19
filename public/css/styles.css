@@ -29,20 +29,18 @@ Media Query:
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Libre+Baskerville&family=Lora&family=Mukta&display=swap');
-
 body {
   background-image: url(/images/site/checkerboard.jpg)
 }
 
 #wrapper {
   margin: auto; 
-  width: 70%; 
+  width: 100%; 
   border: 3px solid rgb(32, 177, 255); 
   padding: 10px; 
   background-color: white;
   border-radius: 15px;
-  font-family: "Libre Baskerville", 'Times New Roman', Times, serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
 }
 
 a {
@@ -83,7 +81,7 @@ nav a{
 #hero {
   position: relative; 
   margin-bottom: 3rem; 
-  font-family: "Abril", 'Times New Roman', Times, serif;
+  font-family:Georgia, 'Times New Roman', Times, serif; 
 }
 
 #hero-image {
@@ -133,7 +131,7 @@ nav a{
   display: block; 
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 500px) {
 
 #delorean {
   display: flex; 
@@ -150,14 +148,6 @@ nav a{
 
 #reviews {
   width: 100%; 
-}
-
-#highlight img {
-  width: 100%; 
-}
-
-#highlight h3, p {
-  font-size: 1.5rem;
 }
 
 }
