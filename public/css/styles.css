@@ -30,13 +30,13 @@ Media Query:
 }
 
 body {
-  background-image: url(/images/site/small_check.jpg)
+  background-image: url(/images/site/checkerboard.jpg)
 }
 
 #wrapper {
   margin: auto; 
   width: 100%; 
-  border: 3px solid rgb(32, 177, 255); 
+  border: 3px solid rgb(35, 21, 86); 
   padding: 10px; 
   background-color: white;
   border-radius: 15px;
@@ -89,7 +89,7 @@ nav a{
   align-items: center;
 }
 #highlight {
-  background-color: rgb(255, 255, 255, .7);
+  background-color: rgb(255, 255, 255, .8);
   position: absolute;
   top: 30%; 
   left: 5%; 
@@ -114,7 +114,7 @@ nav a{
 }
 
 .upgrade {
-  background-color: rgb(60, 141, 255);
+  background-color: rgb(78, 94, 117);
   padding: .4rem; 
   border: 1.5px solid black; 
   margin: .5rem; 
@@ -131,10 +131,11 @@ nav a{
   display: block; 
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 650px) {
 
   #wrapper {
     width: 85%; 
+    max-width: 1000px;
   }
 
   #delorean {
@@ -153,9 +154,4 @@ nav a{
   #reviews {
     width: 100%; 
   }
-
-  body {
-    background-image: url(/images/site/checkerboard.jpg)
-  }
-
 }
