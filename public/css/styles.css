@@ -81,6 +81,7 @@ nav a{
   width: 100%; 
   align-items: center;
 }
+
 #highlight {
   background-color: rgb(255, 255, 255, .8);
   position: absolute;
@@ -88,13 +89,13 @@ nav a{
   left: 5%; 
 }
 
-#highlight h3, p {
-  margin: 1rem 1.6rem; 
+#highlight h2, #highlight h3 {
+  margin: .7rem; 
   color:rgb(44, 58, 79); 
 }
 
 #own-button {
-  margin: 1.3rem; 
+  margin: 1.2rem; 
 }
 
 #own-button img {
