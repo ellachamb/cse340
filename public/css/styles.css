@@ -29,17 +29,10 @@ Media Query:
   box-sizing: border-box;
 }
 
-body {
-  background-image: url(/images/site/checkerboard.jpg)
-}
-
 #wrapper {
   margin: auto; 
   width: 100%; 
-  border: 3px solid rgb(35, 21, 86); 
-  padding: 10px; 
   background-color: white;
-  border-radius: 15px;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
 }
 
@@ -131,7 +124,19 @@ nav a{
   display: block; 
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 420px) {
+  body {
+    background-image: url(/images/site/checkerboard.jpg)
+  }
+
+  #wrapper {
+    border: 3px solid rgb(35, 21, 86); 
+    padding: 10px; 
+    border-radius: 15px;
+  }
+}
+
+@media screen and (min-width: 700px) {
 
   #wrapper {
     width: 85%; 
