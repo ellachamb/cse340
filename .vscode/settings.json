@@ -10,8 +10,8 @@
             "port": 5432,
             "askForPassword": true,
             "driver": "PostgreSQL",
-            "name": "render.com",
-            "connectString": "postgres://cse340:Q31F3qeHtYSHTwChK9V0t7KznAOQQZlM@dpg-cmoloc8cmk4c738t7sdg-a.oregon-postgres.render.com/cse340_hd9k"
+            "name": "Render",
+            "connectString": "postgres://cse340database2:Icdh3uFMudjTuLvA6eJxOunIrQQVVL7A@dpg-cmuksfgcmk4c73ac3fag-a.oregon-postgres.render.com/cse340database2"
         }
     ]
 }
