@@ -28,17 +28,18 @@ Media Query:
 *:after {
   box-sizing: border-box;
 }
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap'); 
 
 #wrapper {
   margin: auto; 
   width: 100%; 
   background-color: white;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+  font-family: 'Roboto Slab', serif;
 }
 
 a {
   text-decoration: none;
-  color: black; 
+  color: rgb(33, 33, 33); 
 }
 
 #top-header {
@@ -125,6 +126,37 @@ nav a{
   display: block; 
 }
 
+/* Inventory Display */
+#inv-display {
+  align-items: center; 
+  margin: 0 auto; 
+  padding: 0; 
+}
+
+#inv-display li {
+  list-style: none; 
+  margin: 1rem auto;  
+  border: 1px solid rgb(126, 126, 126); 
+  border-radius: 10px; 
+  background-color: rgb(197, 199, 196);
+  width: 100%;
+  height: 100%; 
+  text-align: center;
+  box-shadow: 5px 5px 5px rgb(184, 191, 174);
+}
+
+#inv-display img {
+  width: 97%; 
+  border-radius: 10px; 
+  object-fit: contain;
+  margin: .3rem auto; 
+}
+
+.namePrice {
+  margin: .6rem;
+}
+
+
 @media screen and (min-width: 420px) {
   body {
     background-image: url(/images/site/checkerboard.jpg)
@@ -134,6 +166,11 @@ nav a{
     border: 3px solid rgb(35, 21, 86); 
     padding: 10px; 
     border-radius: 15px;
+  }
+  #inv-display {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1.5rem;
   }
 }
 
@@ -160,4 +197,8 @@ nav a{
   #reviews {
     width: 100%; 
   }
+  #inv-display img {
+    min-height: 40%; 
+  }
+  
 }
