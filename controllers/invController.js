@@ -2,6 +2,7 @@ const invModel = require("../models/inventory-model");
 const utilities = require("../utilities/");
 
 const invCont = {};
+const details = {};
 
 /* ***************************
  *  Build inventory by classification view
@@ -16,6 +17,21 @@ invCont.buildByClassificationId = async function (req, res, next) {
     title: className + " vehicles",
     nav,
     grid,
+  });
+};
+
+/* ***************************
+ *  Build details view
+ * ************************** */
+invCont.buildByInventoryId = async function (req, res, next) {
+  const inv_id = req.params.invId;
+  const data = await invModel.getDetailsByInventoryId(inv_id);
+  const content = utilities.buildDetails(data);
+  let nav = await utilities.getNav();
+  res.render("./inventory/detail", {
+    title: data.inv_make + " " + data.inv_model,
+    nav,
+    content,
   });
 };
 

@@ -82,7 +82,7 @@ VALUES (
     'FBI',
     'Surveillance Van',
     '2016',
-    'do you like police shows? You will feel right at home driving this van, come complete with survalence equipments for and extra fee of $2,000 a month. ',
+    'Do you like police shows? You will feel right at home driving this van, come complete with survalence equipments for and extra fee of $2,000 a month.',
     '/images/fbi.jpg',
     '/images/fbi-tn.jpg',
     20000,

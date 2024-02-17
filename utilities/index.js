@@ -77,6 +77,34 @@ Util.buildClassificationGrid = async function (data) {
   return grid;
 };
 
+/* **************************************
+ * Build the details view HTML
+ * ************************************ */
+Util.buildDetails = function (data) {
+  let content = "";
+  if (data) {
+    content = '<div id="specifics-container">';
+    content += '<div id="details-image">';
+    content +=
+      '<img src="' +
+      data.inv_image +
+      '" alt="Image of ' +
+      data.inv_make +
+      " " +
+      data.inv_model +
+      ' on CSE Motors" />';
+    content += "</div>";
+    content += '<div id="details-info">';
+    content += "<h1>" + data.inv_make + " " + data.inv_model + "</h1>";
+    content += "<h2>Price: $" + data.inv_price + "</h2>";
+    content += "<p>" + data.inv_description + "</p>";
+  } else {
+    content +=
+      '<p class="notice">Sorry, no matching vehicles could be found.</p>';
+  }
+  return content;
+};
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for
