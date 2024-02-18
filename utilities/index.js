@@ -94,10 +94,17 @@ Util.buildDetails = function (data) {
       data.inv_model +
       ' on CSE Motors" />';
     content += "</div>";
-    content += '<div id="details-info">';
-    content += "<h1>" + data.inv_make + " " + data.inv_model + "</h1>";
-    content += "<h2>Price: $" + data.inv_price + "</h2>";
+    content += '<div id="details-description">';
     content += "<p>" + data.inv_description + "</p>";
+    content += "</div>";
+    content += '<div id="details-info">';
+    content += "<h3>Year: " + data.inv_year + "</h3>";
+    content += "<h3>Color: " + data.inv_color + "</h3>";
+    content += "<h3>Miles: " + data.inv_miles.toLocaleString() + "</h3>";
+    content +=
+      "<h3>Price: $" +
+      new Intl.NumberFormat("en-US").format(data.inv_price) +
+      "</h3>";
   } else {
     content +=
       '<p class="notice">Sorry, no matching vehicles could be found.</p>';
