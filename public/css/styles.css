@@ -72,14 +72,12 @@ nav ul{
 nav a{
   color: rgb(28, 28, 28); 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 1.2rem; 
   color: white; 
 }
 
 nav a:hover {
   color: rgb(18, 25, 47);
   background-color: white;
-  padding: 1.2rem;
 }
 
 #hero {
@@ -141,6 +139,9 @@ nav a:hover {
   align-items: center; 
   margin: 0 auto; 
   padding: 0; 
+  display: flex;
+  flex-direction: column; 
+  width: 95%
 }
 
 #inv-display li {
@@ -162,6 +163,53 @@ nav a:hover {
   margin: .3rem auto; 
 }
 
+footer {
+  margin-top: 1rem;
+}
+
+#error-message {
+  position: absolute;
+  top: 40%;
+  z-index: 1; 
+  margin: 1rem; 
+}
+
+#error-image {
+  width: 100%; 
+  margin: 0 auto; 
+  position: relative;
+}
+
+#specifics-container img{
+  width: 100%; 
+  margin: 0 auto;
+}
+
+#details-image {
+  background-color: rgb(35, 35, 35);
+  padding: .5rem; 
+}
+
+#details {
+  background-color: rgb(35, 35, 35); 
+  margin: .2rem;
+}
+
+#details-description {
+  background-color: rgb(78, 94, 117); 
+  padding: .3rem; 
+  color: white; 
+  margin: 1rem;
+  text-align: center;
+}
+
+#details-info {
+  background-color: rgb(78, 117, 86);
+  color: white; 
+  padding: 1rem; 
+  margin: 1rem; 
+  text-align: center;
+}
 
 @media screen and (min-width: 420px) {
   body {
@@ -173,14 +221,14 @@ nav a:hover {
     padding: 10px; 
     border-radius: 15px;
   }
+}
+
+@media screen and (min-width: 700px) {
   #inv-display {
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1.5rem;
   }
-}
-
-@media screen and (min-width: 700px) {
 
   #wrapper {
     width: 85%; 
@@ -202,6 +250,21 @@ nav a:hover {
 
   #reviews {
     width: 100%; 
+  }
+
+  #specifics-container {
+    display: flex; 
+    flex-direction: row; 
+    width: 100%; 
+    align-items: center;
+  }
+
+  #details-image {
+    width: 100%;  
+  }
+
+  #details {
+    width: 80%; 
   }
   
 }

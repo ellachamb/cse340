@@ -35,4 +35,12 @@ invCont.buildByInventoryId = async function (req, res, next) {
   });
 };
 
+invCont.triggerError = (req, res, next) => {
+  try {
+    throw new Error("500 Error: Oh No! Something broke!");
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = invCont;

@@ -94,6 +94,7 @@ Util.buildDetails = function (data) {
       data.inv_model +
       ' on CSE Motors" />';
     content += "</div>";
+    content += '<div id="details">';
     content += '<div id="details-description">';
     content += "<p>" + data.inv_description + "</p>";
     content += "</div>";
@@ -105,6 +106,9 @@ Util.buildDetails = function (data) {
       "<h3>Price: $" +
       new Intl.NumberFormat("en-US").format(data.inv_price) +
       "</h3>";
+    content += "</div>";
+    content += "</div>";
+    content += "</div>";
   } else {
     content +=
       '<p class="notice">Sorry, no matching vehicles could be found.</p>';
