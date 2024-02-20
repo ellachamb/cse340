@@ -190,17 +190,13 @@ footer {
   padding: .5rem; 
 }
 
-#details {
-  background-color: rgb(35, 35, 35); 
-  margin: .2rem;
-}
-
 #details-description {
   background-color: rgb(78, 94, 117); 
   padding: .3rem; 
   color: white; 
   margin: 1rem;
   text-align: center;
+  border-radius: 10px;
 }
 
 #details-info {
@@ -209,6 +205,7 @@ footer {
   padding: 1rem; 
   margin: 1rem; 
   text-align: center;
+  border-radius: 10px;
 }
 
 @media screen and (min-width: 420px) {
