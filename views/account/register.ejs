@@ -1,0 +1,23 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+<%- messages() %>
+<div class="login-div">
+<form class="login-form" action="/account/register" method="post">
+    <p>All fields are required.</p>
+    <p><input type="text" name="account_firstname" id="accountFirstname" required value="<%= locals.account_firstname %>"></p>
+    <p><input type="text" name="account_lastname" id="accountLastname" required value="<%= locals.account_lastname %>"></p>
+    <p><input type="email" name="account_email" id ="accountEmail" required value="<%= locals.account_email %>"></p>
+    <p><input type="password" name="account_password" placeholder="Password" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}" title="Password must be at least 12 characters long and contain at least one uppercase letter, one number, and one special character" required></p>
+    <input type="submit" value="Register">
+</form>
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+</div>

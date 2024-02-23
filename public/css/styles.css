@@ -208,6 +208,25 @@ footer {
   border-radius: 10px;
 }
 
+.click-link {
+  color: rgb(46, 46, 46); 
+  text-decoration: underline;
+}
+
+.login-div {
+  margin: 1rem auto; 
+  width: 80%;
+  background-color: rgb(189, 198, 184);
+  padding: 1rem;
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px rgb(184, 191, 174);
+  border-radius: 10px;
+}
+
+.login-form {
+  width: 100%;
+}
+
 @media screen and (min-width: 420px) {
   body {
     background-image: url(/images/site/checkerboard.jpg)
@@ -262,6 +281,16 @@ footer {
 
   #details {
     width: 80%; 
+  }
+
+  .login-div {
+    width: 60%;
+    padding: 1rem; 
+    align-items: center;
+  }
+
+  .login-form {
+    vertical-align: middle;
   }
   
 }
