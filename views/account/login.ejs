@@ -4,14 +4,14 @@
     res.redirect('/')
 } %>
 <%- messages() %>
-<div class="login-div">
+<div class="form-div">
 <p>All fields are required.</p>
-<form class="login-form" action="/account/login" method="post">
-    <p><label for="email">Email:</label></p>
-    <p><input type="email" name="account_email" placeholder="Email" id ="email" required value="<%= locals.account_email %>"></p>
-    <p><label for="password">Password:</label></p>
-    <p><input type="password" name="account_password" id="password" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required></p>
-    <p><input type="submit" value="Login"></p>
+<form class="form" action="/account/login" method="post">
+    <label for="email">Email:</label>
+    <input type="email" name="account_email" placeholder="Email" id ="email" required value="<%= locals.account_email %>">
+    <label for="password">Password:</label>
+    <input type="password" name="account_password" id="password" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required>
+    <input type="submit" value="Login">
 </form>
     <span>No Account? <a class="click-link" href="/account/register">Sign-up</a></span>
 </div>

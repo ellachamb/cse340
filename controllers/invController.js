@@ -45,4 +45,31 @@ invCont.triggerError = (req, res, next) => {
   }
 };
 
+invCont.buildManagement = async (req, res, next) => {
+  let nav = await utilities.getNav();
+  res.render("./inventory/management", {
+    title: "Inventory Management",
+    nav,
+    errors: null,
+  });
+};
+
+invCont.buildAddClassification = async (req, res, next) => {
+  let nav = await utilities.getNav();
+  res.render("./inventory/add-classification", {
+    title: "Add Classification Type",
+    nav,
+    errors: null,
+  });
+};
+
+invCont.buildAddInventory = async (req, res, next) => {
+  let nav = await utilities.getNav();
+  res.render("./inventory/add-inventory", {
+    title: "Add Inventory Item",
+    nav,
+    errors: null,
+  });
+};
+
 module.exports = invCont;

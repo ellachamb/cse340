@@ -60,7 +60,6 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 // Inventory routes
 app.use("/inv", utilities.handleErrors(inventoryRoute));
 // Account routes
-// Account routes
 app.use("/account", require("./routes/accountRoute"));
 app.get("/trigger-error", utilities.handleErrors(invController.triggerError));
 

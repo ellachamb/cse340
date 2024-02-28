@@ -4,17 +4,17 @@
     res.redirect('/')
 } %>
 <%- messages() %>
-<div class="login-div">
-<form class="login-form" action="/account/register" method="post">
+<div class="form-div">
+<form class="form" action="/account/register" method="post">
     <p>All fields are required.</p>
-    <p><label for="first_name">First Name:</label></p>
-    <p><input type="text" name="account_firstname" id="first_name" required value="<%= locals.account_firstname %>"></p>
-    <p><label for="last_name">Last Name:</label></p>
-    <p><input type="text" name="account_lastname" id="last_name" required value="<%= locals.account_lastname %>"></p>
-    <p><label for="email">Email:</label></p>
-    <p><input type="email" name="account_email" id ="email" required value="<%= locals.account_email %>"></p>
-    <p><label for="password">Password:</label></p>
-    <p><input type="password" name="account_password" placeholder="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" title="Password must be at least 12 characters long and contain at least one uppercase letter, one number, and one special character" required></p>
+    <label for="first_name">First Name:</label>
+    <input type="text" name="account_firstname" id="first_name" required value="<%= locals.account_firstname %>">
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="account_lastname" id="last_name" required value="<%= locals.account_lastname %>">
+    <label for="email">Email:</label>
+    <input type="email" name="account_email" id ="email" required value="<%= locals.account_email %>">
+    <label for="password">Password:</label>
+    <input type="password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" title="Password must be at least 12 characters long and contain at least one uppercase letter, one number, and one special character" required>
     <input type="submit" value="Register">
 </form>
 <% if (errors) { %>
