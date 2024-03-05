@@ -287,6 +287,22 @@ input:required:valid, input:valid:focus, select:required:valid, select:valid:foc
   color: rgb(203, 216, 254); 
 }
 
+.notice {
+  align-items: center;
+  margin: 0;
+  list-style: none;
+  padding: 0; 
+}
+
+.notice li{
+  color: black; 
+  margin-bottom: .4rem; 
+  padding: .4rem; 
+  background-color: rgb(219, 189, 187); 
+  
+}
+
+
 @media screen and (min-width: 420px) {
   body {
     background-image: url(/images/site/checkerboard.jpg)
