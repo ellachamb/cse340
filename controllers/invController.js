@@ -63,13 +63,87 @@ invCont.buildAddClassification = async (req, res, next) => {
   });
 };
 
+invCont.enterClassification = async (req, res, next) => {
+  let nav = await utilities.getNav();
+  const { classification_name } = req.body;
+
+  const formResult = await invModel.enterClassification(classification_name);
+
+  if (formResult) {
+    req.flash(
+      "notice",
+      `You have added a new classification: ${classification_name}!`
+    );
+    let nav = await utilities.getNav();
+    res.status(201).render("./inventory/management", {
+      title: "Inventory Management",
+      nav,
+    });
+  } else {
+    req.flash("notice", "Sorry, the process failed. Please try again.");
+    res.status(501).render("./inventory/add-classification", {
+      title: "Add Classification Type",
+      nav,
+    });
+  }
+};
+
 invCont.buildAddInventory = async (req, res, next) => {
   let nav = await utilities.getNav();
+  const select = await utilities.buildClassificationList();
   res.render("./inventory/add-inventory", {
     title: "Add Inventory Item",
     nav,
+    select,
     errors: null,
   });
+};
+
+invCont.enterInventory = async (req, res, next) => {
+  let nav = await utilities.getNav();
+  const {
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+  } = req.body;
+
+  const invResult = await invModel.enterInventory(
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id
+  );
+
+  if (invResult) {
+    req.flash(
+      "notice",
+      `You have added a new inventory item in ${classification_id}!`
+    );
+    let nav = await utilities.getNav();
+    res.status(201).render("./inventory/management", {
+      title: "Inventory Management",
+      nav,
+    });
+  } else {
+    req.flash("notice", "Sorry, the process failed. Please try again.");
+    res.status(501).render("./inventory/add-inventory", {
+      title: "Add Inventory Item",
+      nav,
+    });
+  }
 };
 
 module.exports = invCont;

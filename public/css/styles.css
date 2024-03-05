@@ -212,7 +212,6 @@ footer {
   border-right: 1px solid white;
 }
 
-/* Style for the login form container */
 .form-div {
   width: 300px;
   margin: 0 auto;
@@ -222,19 +221,16 @@ footer {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Style for the form */
 .form {
   display: flex;
   flex-direction: column;
 }
 
-/* Style for labels */
 .form label {
   font-weight: bold;
 }
 
-/* Style for input fields */
-.form input, .form select{
+.form input, .form select, .form textarea{
   width: 100%;
   padding: 10px;
   margin: 5px 0 15px 0;
@@ -243,7 +239,6 @@ footer {
   box-sizing: border-box;
 }
 
-/* Style for submit button */
 .form input[type="submit"] {
   background-color: #4CAF50;
   color: white;
@@ -262,22 +257,17 @@ footer {
   font-size: 14px;
 }
 
-/* Style for the sign-up link */
 .click-link {
   color: blue;
   text-decoration: underline;
 }
 
-input:required:invalid, input:focus:invalid {
-  background-image: url(/images/invalid.png);
-  background-position: right top;
-  background-repeat: no-repeat;
+input:required:invalid, input:invalid:focus, select:required:invalid, select:invalid:focus, textarea:required:invalid, textarea:invalid:focus{
+  border: 2px solid red; 
  }
-  input:required:valid {
-  background-image: url(/images/valid.png);
-  background-position: right top;
-  background-repeat: no-repeat;
-  }
+input:required:valid, input:valid:focus, select:required:valid, select:valid:focus, textarea:required:valid, textarea:valid:focus{
+  border: 2px solid green;
+}
  
 .add-button {
   margin: 1rem; 
