@@ -128,10 +128,7 @@ invCont.enterInventory = async (req, res, next) => {
   );
 
   if (invResult) {
-    req.flash(
-      "notice",
-      `You have added a new inventory item in ${classification_id}!`
-    );
+    req.flash("notice", `You have added a new inventory item!`);
     let nav = await utilities.getNav();
     res.status(201).render("./inventory/management", {
       title: "Inventory Management",
