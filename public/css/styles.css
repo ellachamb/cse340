@@ -240,8 +240,9 @@ footer {
 }
 
 .form input[type="submit"] {
-  background-color: #4CAF50;
+  background-color: #136016;
   color: white;
+  font-weight: bold; 
   padding: 10px 20px;
   border: none;
   border-radius: 3px;
@@ -249,7 +250,7 @@ footer {
 }
 
 .form input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #174d1a;
 }
 
 .form-div span {
