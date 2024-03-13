@@ -17,6 +17,7 @@ const invController = require("./controllers/invController");
 const session = require("express-session");
 const pool = require("./database/");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 /* ***********************
  * Middleware
@@ -43,6 +44,8 @@ app.use(function (req, res, next) {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(cookieParser());
+app.use(utilities.checkJWTToken);
 
 /* ***********************
  * View Engine and Templates
@@ -54,6 +57,7 @@ app.set("layout", "./layouts/layout"); //not at views root
 /* ***********************
  * Routes
  *************************/
+// get points to controller, while use points to route
 app.use(static);
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome));
@@ -61,6 +65,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", utilities.handleErrors(inventoryRoute));
 // Account routes
 app.use("/account", require("./routes/accountRoute"));
+// Trigger Error Route
 app.get("/trigger-error", utilities.handleErrors(invController.triggerError));
 
 //  File Not Found Route - must be last route in list

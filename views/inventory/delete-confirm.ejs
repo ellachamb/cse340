@@ -1,0 +1,51 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+<%- messages() %>
+
+<div class="form-div">
+    <% if (errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+    <p>All fields are required.</p>
+    <form class="form" action="/inv/update" method="post">
+        <label for="inv_make">Make:</label>
+        <input type="text" name="inv_make" id="inv_make" required minLength="3" placeholder="Min of 3 characters" value="<%= locals.inv_make %>">
+
+        <label for="inv_model">Model:</label>
+        <input type="text" name="inv_model" id="inv_model" required minLength="3" placeholder="Min of 3 characters" value="<%= locals.inv_model %>">
+
+        <label for="inv_year">Year:</label>
+        <input type="text" name="inv_year" id="inv_year" size="4" placeholder="4-digit year" required pattern="^(19|20)\d{2}$" value="<%= locals.inv_year %>">
+
+        <label for="inv_description">Description:</label>
+        <input type="text" name="inv_description" id ="inv_description" required value="<%= locals.inv_description %>">
+
+        <label for="inv_image">Image Path:</label>
+        <input type="text" name="inv_image" id ="inv_image" required value="<%= locals.inv_image %>">
+
+        <label for="inv_thumbnail">Thumbnail Path:</label>
+        <input type="text" name="inv_thumbnail" id ="inv_thumbnail" required value="<%= locals.inv_thumbnail %>">
+
+        <label for="inv_price">Price:</label>
+        <input type="text" name="inv_price" id="inv_price" size="10" placeholder="Decimal or integer values only" pattern="^-?\d+(\.\d+)?$" required value="<%= locals.inv_price %>">
+
+        <label for="inv_miles">Miles:</label>
+        <input type="text" name="inv_miles" id="inv_miles" size="10" placeholder="Digits only" required pattern="^\d+$" value="<%= locals.inv_miles %>">
+
+        <label for="inv_color">Color:</label>
+        <input type="text" name="inv_color" id="inv_color" required value="<%= locals.inv_color %>">
+
+        <label for = "classificationList">Classification:</label>
+        <%- classificationSelect %>
+        
+        <input type="submit" name="submit" value="Delete Vehicle">
+    </form>
+    </div>
