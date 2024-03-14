@@ -1,28 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap'); 
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap'); 
-/* General Styles: 
-- imports
-- box model
-- universal styles
-- header
-- navigation
-- body
-- footer
-Component styles: 
-- hero- home view
--review- home view
--add ons- home view
--forms
--classification view
--detail view
-Media Query: 
--general
--header
--navigation
--hero home
--review and add on
--classification view
--detail view*/
+
 
 /****** Change Box Model **************/
 *,

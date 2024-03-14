@@ -64,4 +64,6 @@ router.get(
   utilities.handleErrors(invController.deleteInventoryView)
 );
 
+router.post("/delete/", utilities.handleErrors(invController.deleteInventory));
+
 module.exports = router;
