@@ -189,4 +189,15 @@ Util.checkLogin = (req, res, next) => {
   }
 };
 
+Util.checkAccountType = (req, res, next) => {
+  if (res.locals.accountData.account_type === "Admin") {
+    next();
+  } else if (res.locals.accountData.account_type === "Employee") {
+    next();
+  } else {
+    req.flash("notice", "You do not have permission to view this page.");
+    return res.redirect("/");
+  }
+};
+
 module.exports = Util;

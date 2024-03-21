@@ -1,0 +1,9 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+<%- messages() %>
+
+<p class = "add-button"><a href="/account/update-account">Account Update</a></p>
+<p class = "add-button"><a href="/account/change-password">Change Password</a></p>

@@ -129,7 +129,37 @@ async function accountLogin(req, res) {
   }
 }
 
+async function buildUpdateView(req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("account/update", {
+    title: "Options to Update Account Information",
+    nav,
+    errors: null,
+  });
+}
+
+async function buildUpdateAccount(req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("account/update-account", {
+    title: "Update Account Information",
+    nav,
+    errors: null,
+  });
+}
+
+async function buildChangePassword(req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("account/change-password", {
+    title: "Change Password",
+    nav,
+    errors: null,
+  });
+}
+
 module.exports = {
+  buildUpdateAccount,
+  buildChangePassword,
+  buildUpdateView,
   buildAccountManagement,
   buildLogin,
   buildRegister,

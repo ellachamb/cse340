@@ -18,7 +18,11 @@ router.get(
   "/trigger-error",
   utilities.handleErrors(invController.triggerError)
 );
-router.get("", utilities.handleErrors(invController.buildManagement));
+router.get(
+  "/",
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.buildManagement)
+);
 router.get(
   "/add-inventory",
   utilities.handleErrors(invController.buildAddInventory)

@@ -68,6 +68,11 @@ app.use("/account", require("./routes/accountRoute"));
 // Trigger Error Route
 app.get("/trigger-error", utilities.handleErrors(invController.triggerError));
 
+app.get("/account/logout", function (req, res) {
+  res.clearCookie("jwt");
+  res.redirect("/");
+});
+
 //  File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({ status: 404, message: "Sorry, we appear to have lost that page." });
