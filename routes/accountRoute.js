@@ -29,18 +29,24 @@ router.post(
   utilities.handleErrors(accountController.accountLogin)
 );
 
-router.get("/update", utilities.checkLogin, accountController.buildUpdateView);
-
 router.get(
-  "/update-account",
+  "/update/:account_id",
   utilities.checkLogin,
-  accountController.buildUpdateAccount
+  accountController.buildUpdateView
 );
 
-router.get(
+router.post(
+  "/update-account",
+  regValidate.updateRules(),
+  regValidate.checkUpdateData,
+  utilities.handleErrors(accountController.updateAccount)
+);
+
+router.post(
   "/change-password",
-  utilities.checkLogin,
-  accountController.buildChangePassword
+  regValidate.passwordRules(),
+  regValidate.checkPasswordData,
+  utilities.handleErrors(accountController.updatePassword)
 );
 
 module.exports = router;

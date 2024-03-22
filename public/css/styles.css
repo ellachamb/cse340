@@ -352,5 +352,11 @@ input:required:valid, input:valid:focus, select:required:valid, select:valid:foc
   .login-form {
     vertical-align: middle;
   }
+
+  #update-forms {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-around;
+  }
   
 }

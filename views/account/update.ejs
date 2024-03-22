@@ -4,6 +4,51 @@
     res.redirect('/')
 } %>
 <%- messages() %>
+<div id="update-forms">
+<div class="form-div">
+    <% if (errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+    <p>All fields are required.</p>
+    <form id="updateForm" class="form" action="/account/update-account" method="post">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="account_firstname" id="first_name" required value="<%= locals.account_firstname %>">
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="account_lastname" id="last_name" required value="<%= locals.account_lastname %>">
+        <label for="email">Email:</label>
+        <input type="email" name="account_email" id ="email" required value="<%= locals.account_email %>">
+        
+        <input type="submit" name="submit" value="Update Account" disabled>
+        <input type="hidden" name="account_id"
+        <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+        <% } %>>
+    </form>
+    </div>
 
-<p class = "add-button"><a href="/account/update-account">Account Update</a></p>
-<p class = "add-button"><a href="/account/change-password">Change Password</a></p>
+    <script src="../../js/inv-update.js"></script>
+
+    <div class="form-div">
+        <% if (errors) { %>
+            <ul class="notice">
+           <% errors.array().forEach(error => { %>
+             <li><%= error.msg %></li>
+          <%  }) %>
+           </ul>
+          <% } %>
+        <p>This will change your current password.</p>
+        <form class="form" action="/account/change-password" method="post">
+            <label for="account_password">Password:</label>
+            <input type="password" name="account_password" id="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" title="Password must be at least 12 characters long and contain at least one uppercase letter, one number, and one special character" required>
+            <p>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</p> 
+            
+            <input type="submit" name="submit" value="Change Password">
+            <input type="hidden" name="account_id"
+            <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+            <% } %>>
+        </form>
+        </div>
+    </div>

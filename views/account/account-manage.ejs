@@ -10,4 +10,4 @@
 <% if (locals.accountData.account_type === "Employee" || locals.accountData.account_type === "Admin") { %>
     <p class = "add-button"><a href="/inv/">Inventory Management</a></p>
   <% } %>
-<p class = "add-button"><a href="/account/update">Account Update Information</a></p>
+  <p class="add-button"><a href="/account/update/<%= locals.accountData.account_id %>">Account Update Information</a></p>
