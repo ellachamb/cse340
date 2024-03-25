@@ -58,6 +58,10 @@ nav a:hover {
   color: rgb(203, 216, 254);
 }
 
+.login {
+  font-weight: bold; 
+}
+
 #hero {
   position: relative; 
   margin-bottom: 3rem; 

@@ -5,9 +5,9 @@
     <div id="tools">
       <% if (locals.loggedin) { %>
         <a title="Welcome user signed in <%= accountData.account_firstname %>" href="/account/">Welcome <%- accountData.account_firstname %></a>
-        <a title="Click to log out" href="/account/logout">Log Out</a>
+        <a class="login" title="Click to log out" href="/account/logout">Log Out</a>
       <% } else { %>
-      <a title="Click to log in" href="/account/login">Login</a>
+      <a class="login" title="Click to log in" href="/account/login">Login</a>
       <% } %>
     </div>
   </header>
