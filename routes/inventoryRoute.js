@@ -34,6 +34,7 @@ router.get(
 
 router.post(
   "/add-classification",
+  utilities.checkAccountType,
   managementValidation.classificationRules(),
   managementValidation.checkClassificationData,
   utilities.handleErrors(invController.enterClassification)
@@ -41,6 +42,7 @@ router.post(
 
 router.post(
   "/add-inventory",
+  utilities.checkAccountType,
   managementValidation.inventoryRules(),
   managementValidation.checkInventoryData,
   utilities.handleErrors(invController.enterInventory)
@@ -69,5 +71,10 @@ router.get(
 );
 
 router.post("/delete/", utilities.handleErrors(invController.deleteInventory));
+
+router.get(
+  "/approve",
+  utilities.handleErrors(invController.approveInventoryView)
+);
 
 module.exports = router;

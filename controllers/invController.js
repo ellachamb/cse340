@@ -73,7 +73,7 @@ invCont.enterClassification = async (req, res, next) => {
   if (formResult) {
     req.flash(
       "notice",
-      `You have added a new classification: ${classification_name}!`
+      `The ${classification_name} classification was successfully added, but must be approved.`
     );
     let nav = await utilities.getNav();
     res.status(201).render("./inventory/management", {
@@ -129,7 +129,10 @@ invCont.enterInventory = async (req, res, next) => {
   );
 
   if (invResult) {
-    req.flash("notice", `You have added a new inventory item!`);
+    req.flash(
+      "notice",
+      `You have added a new inventory item, but it must be approved first.`
+    );
     let nav = await utilities.getNav();
     res.status(201).redirect("/inv");
   } else {
@@ -278,6 +281,18 @@ invCont.deleteInventory = async function (req, res, next) {
     req.flash("notice", "Sorry, the deletion failed.");
     res.status(501).redirect("/inv/");
   }
+};
+
+invCont.approveInventoryView = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  const data = await invModel.getUnapprovedInventory();
+  const grid = await utilities.buildApprovalGrid(data);
+  res.render("./inventory/approve", {
+    title: "Approve Inventory",
+    nav,
+    grid,
+    errors: null,
+  });
 };
 
 module.exports = invCont;

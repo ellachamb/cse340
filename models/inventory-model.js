@@ -9,6 +9,18 @@ async function getClassifications() {
   );
 }
 
+async function getApprovedClassifications() {
+  return await pool.query(
+    "SELECT * FROM public.classification WHERE classification_approved='TRUE' ORDER BY classification_name"
+  );
+}
+
+async function getUnapprovedClassifications() {
+  return await pool.query(
+    "SELECT * FROM public.classification WHERE classification_approved='FALSE' ORDER BY classification_name"
+  );
+}
+
 /* ***************************
  *  Get all inventory items and classification_name by classification_id
  * ************************** */
@@ -133,7 +145,46 @@ async function deleteInventoryItem(inv_id) {
   }
 }
 
+// async function getInventoryJSON(req, res, next) {
+//   try {
+//     const classification_id = parseInt(req.params.classification_id);
+//     const data = await pool.query(
+//       `SELECT * FROM public.inventory AS i
+//       JOIN public.classification AS c
+//       ON i.classification_id = c.classification_id
+//       WHERE i.classification_id = $1`,
+//       [classification_id]
+//     );
+//     if (data.rows[0].inv_id) {
+//       return res.json(data.rows);
+//     } else {
+//       next(new Error("No data returned"));
+//     }
+//   } catch (error) {
+//     console.error("getinventoryjson error " + error);
+//   }
+// }
+
+async function getUnapprovedInventory(req, res, next) {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.inventory AS i 
+      JOIN public.classification AS c 
+      ON i.classification_id = c.classification_id 
+      WHERE i.approved = false`
+    );
+    if (data.rows[0].inv_id) {
+      return res.json(data.rows);
+    } else {
+      next(new Error("No data returned"));
+    }
+  } catch (error) {
+    console.error("getunapprovedinventory error " + error);
+  }
+}
+
 module.exports = {
+  getUnapprovedInventory,
   deleteInventoryItem,
   updateInventory,
   enterInventory,
