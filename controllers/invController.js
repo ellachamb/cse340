@@ -8,7 +8,9 @@ const invCont = {};
  * ************************** */
 invCont.buildByClassificationId = async function (req, res, next) {
   const classification_id = req.params.classificationId;
-  const data = await invModel.getInventoryByClassificationId(classification_id);
+  const data = await invModel.getApprovedInventoryByClassificationId(
+    classification_id
+  );
   const grid = await utilities.buildClassificationGrid(data);
   let nav = await utilities.getNav();
   const className = data[0].classification_name;
@@ -208,7 +210,7 @@ invCont.updateInventory = async function (req, res, next) {
  * ************************** */
 invCont.getInventoryJSON = async (req, res, next) => {
   const classification_id = parseInt(req.params.classification_id);
-  const invData = await invModel.getInventoryByClassificationId(
+  const invData = await invModel.getApprovedInventoryByClassificationId(
     classification_id
   );
   if (invData[0].inv_id) {
@@ -283,14 +285,18 @@ invCont.deleteInventory = async function (req, res, next) {
   }
 };
 
+/* ***************************
+ *  Manage Inventory View
+ * ************************** */
 invCont.approveInventoryView = async function (req, res, next) {
   let nav = await utilities.getNav();
-  const data = await invModel.getUnapprovedInventory();
-  const grid = await utilities.buildApprovalGrid(data);
+  const pending = await utilities.buildApprovalGrid();
+  const invPending = await utilities.buildInvApprovalGrid();
   res.render("./inventory/approve", {
-    title: "Approve Inventory",
+    title: "Manage Inventory Approvals",
     nav,
-    grid,
+    pending,
+    invPending,
     errors: null,
   });
 };

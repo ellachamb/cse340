@@ -7,7 +7,7 @@ require("dotenv").config();
  * Constructs the nav HTML unordered list
  ************************** */
 Util.getNav = async function (req, res, next) {
-  let data = await invModel.getClassifications();
+  let data = await invModel.getApprovedClassifications();
   let list = "<ul>";
   list += '<li><a href="/" title="Home page">Home</a></li>';
   data.rows.forEach((row) => {
@@ -27,7 +27,7 @@ Util.getNav = async function (req, res, next) {
 };
 
 Util.getClassifactionNames = async function (req, res, next) {
-  let data = await invModel.getClassifications();
+  let data = await invModel.getApprovedClassifications();
   let list = [];
   data.rows.forEach((row) => {
     list.push(row.classification_name);
@@ -88,7 +88,7 @@ Util.buildClassificationGrid = async function (data) {
 };
 
 Util.buildClassificationList = async function (classification_id = null) {
-  let data = await invModel.getClassifications();
+  let data = await invModel.getApprovedClassifications();
   let classificationList =
     '<select name="classification_id" id="classificationList" required>';
   classificationList += "<option value=''>Select a classification</option>";
@@ -143,6 +143,51 @@ Util.buildDetails = function (data) {
       '<p class="notice">Sorry, no matching vehicles could be found.</p>';
   }
   return content;
+};
+
+/* **************************************
+ * Build pending approvals list
+ * ************************************ */
+Util.buildApprovalGrid = async function (req, res, next) {
+  let data = await invModel.getUnapprovedClassifications();
+  let pending = "<thead>";
+  if (data.rows.length > 0) {
+    pending += "<tr><th>Classification Name</th><th>Approval</th></tr>";
+    pending += "</thead>";
+    pending += "<tbody>";
+    data.rows.forEach((row) => {
+      pending += "<tr><td>" + row.classification_name + "</td>";
+      pending +=
+        "<td><a href='/inv/approve/" +
+        row.classification_id +
+        "'>Approve</a></td></tr>";
+    });
+    pending += "</tbody>";
+  } else {
+    pending += "<p>No pending approvals</p>";
+  }
+  return pending;
+};
+
+Util.buildInvApprovalGrid = async function (req, res, next) {
+  let data = await invModel.getUnapprovedInventory();
+  let invPending = "<thead>";
+  if (data.rows.length > 0) {
+    invPending +=
+      "<tr><th>Vehicle</th><th>Classification</th><th>Approval</th></tr>";
+    invPending += "</thead>";
+    invPending += "<tbody>";
+    data.rows.forEach((row) => {
+      invPending += "<tr><td>" + row.inv_make + " " + row.inv_model + "</td>";
+      invPending += "<td>" + row.classification_name + "</td>";
+      invPending +=
+        "<td><a href='/inv/approve/" + row.inv_id + "'>Approve</a></td></tr>";
+    });
+    invPending += "</tbody>";
+  } else {
+    invPending += "<p>No pending approvals</p>";
+  }
+  return invPending;
 };
 
 /* ****************************************

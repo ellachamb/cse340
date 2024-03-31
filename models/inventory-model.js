@@ -39,6 +39,30 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
+async function getApprovedInventoryByClassificationId(classification_id) {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.inventory AS i 
+      JOIN public.classification AS c 
+      ON i.classification_id = c.classification_id 
+      WHERE i.classification_id = $1`,
+      [classification_id]
+    );
+    return data.rows;
+  } catch (error) {
+    console.error("getclassificationsbyid error " + error);
+  }
+}
+
+async function getUnapprovedInventory() {
+  return await pool.query(
+    `SELECT * FROM public.inventory AS i 
+      JOIN public.classification AS c 
+      ON i.classification_id = c.classification_id 
+      WHERE i.inv_approved = 'FALSE'`
+  );
+}
+
 async function getDetailsByInventoryId(inv_id) {
   try {
     const data = await pool.query(
@@ -145,45 +169,9 @@ async function deleteInventoryItem(inv_id) {
   }
 }
 
-// async function getInventoryJSON(req, res, next) {
-//   try {
-//     const classification_id = parseInt(req.params.classification_id);
-//     const data = await pool.query(
-//       `SELECT * FROM public.inventory AS i
-//       JOIN public.classification AS c
-//       ON i.classification_id = c.classification_id
-//       WHERE i.classification_id = $1`,
-//       [classification_id]
-//     );
-//     if (data.rows[0].inv_id) {
-//       return res.json(data.rows);
-//     } else {
-//       next(new Error("No data returned"));
-//     }
-//   } catch (error) {
-//     console.error("getinventoryjson error " + error);
-//   }
-// }
-
-async function getUnapprovedInventory(req, res, next) {
-  try {
-    const data = await pool.query(
-      `SELECT * FROM public.inventory AS i 
-      JOIN public.classification AS c 
-      ON i.classification_id = c.classification_id 
-      WHERE i.approved = false`
-    );
-    if (data.rows[0].inv_id) {
-      return res.json(data.rows);
-    } else {
-      next(new Error("No data returned"));
-    }
-  } catch (error) {
-    console.error("getunapprovedinventory error " + error);
-  }
-}
-
 module.exports = {
+  getApprovedClassifications,
+  getUnapprovedClassifications,
   getUnapprovedInventory,
   deleteInventoryItem,
   updateInventory,
@@ -191,5 +179,7 @@ module.exports = {
   enterClassification,
   getClassifications,
   getInventoryByClassificationId,
+  getApprovedInventoryByClassificationId,
+  getUnapprovedInventory,
   getDetailsByInventoryId,
 };
