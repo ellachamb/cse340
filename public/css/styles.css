@@ -285,6 +285,11 @@ input:required:valid, input:valid:focus, select:required:valid, select:valid:foc
   
 }
 
+#blue {
+  color: blue; 
+  text-decoration: underline;
+}
+
 
 @media screen and (min-width: 420px) {
   body {

@@ -158,7 +158,7 @@ Util.buildApprovalGrid = async function (req, res, next) {
     data.rows.forEach((row) => {
       pending += "<tr><td>" + row.classification_name + "</td>";
       pending +=
-        "<td><a href='/inv/approve/" +
+        "<td><a id='blue' href='/inv/approve/" +
         row.classification_id +
         "'>Approve</a></td></tr>";
     });
@@ -180,8 +180,14 @@ Util.buildInvApprovalGrid = async function (req, res, next) {
     data.rows.forEach((row) => {
       invPending += "<tr><td>" + row.inv_make + " " + row.inv_model + "</td>";
       invPending += "<td>" + row.classification_name + "</td>";
-      invPending +=
-        "<td><a href='/inv/approve/" + row.inv_id + "'>Approve</a></td></tr>";
+      if (row.classification_approved === true) {
+        invPending +=
+          "<td><a id='blue' href='/inv/approveInv/" +
+          row.inv_id +
+          "'>Approve</a></td></tr>";
+      } else {
+        invPending += "<td></td></tr>";
+      }
     });
     invPending += "</tbody>";
   } else {
@@ -238,6 +244,15 @@ Util.checkAccountType = (req, res, next) => {
   if (res.locals.accountData.account_type === "Admin") {
     next();
   } else if (res.locals.accountData.account_type === "Employee") {
+    next();
+  } else {
+    req.flash("notice", "You do not have permission to view this page.");
+    return res.redirect("/");
+  }
+};
+
+Util.checkAccountTypeForApprovals = (req, res, next) => {
+  if (res.locals.accountData.account_type === "Admin") {
     next();
   } else {
     req.flash("notice", "You do not have permission to view this page.");

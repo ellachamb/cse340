@@ -45,7 +45,7 @@ async function getApprovedInventoryByClassificationId(classification_id) {
       `SELECT * FROM public.inventory AS i 
       JOIN public.classification AS c 
       ON i.classification_id = c.classification_id 
-      WHERE i.classification_id = $1`,
+      WHERE i.classification_id = $1 AND i.inv_approved = 'TRUE'`,
       [classification_id]
     );
     return data.rows;
@@ -169,7 +169,29 @@ async function deleteInventoryItem(inv_id) {
   }
 }
 
+async function approveClassification(classification_id, account_id) {
+  try {
+    const sql =
+      "UPDATE public.classification SET classification_approved = 'TRUE', classification_approval_data = NOW(), account_id = $2 WHERE classification_id = $1 RETURNING *";
+    return await pool.query(sql, [classification_id, account_id]);
+  } catch (error) {
+    return error.message;
+  }
+}
+
+async function approveInventory(inv_id, account_id) {
+  try {
+    const sql =
+      "UPDATE public.inventory SET inv_approved = 'TRUE', inv_approved_date = NOW(), account_id = $2 WHERE inv_id = $1 RETURNING *";
+    return await pool.query(sql, [inv_id, account_id]);
+  } catch (error) {
+    return error.message;
+  }
+}
+
 module.exports = {
+  approveInventory,
+  approveClassification,
   getApprovedClassifications,
   getUnapprovedClassifications,
   getUnapprovedInventory,

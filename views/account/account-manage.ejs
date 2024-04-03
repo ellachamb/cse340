@@ -11,6 +11,6 @@
     <p class = "add-button"><a href="/inv/">Inventory Management</a></p>
   <% } %>
   <p class="add-button"><a href="/account/update/<%= locals.accountData.account_id %>">Account Update Information</a></p>
-<% if (locals.accountData.account_type === "Admin" || locals.accountData.account_type == "Employee") { %>
+<% if (locals.accountData.account_type === "Admin") { %>
     <p class = "add-button"><a href="/inv/approve">Manage Pending Approvals</a></p>
   <% } %>

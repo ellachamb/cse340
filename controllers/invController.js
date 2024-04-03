@@ -13,12 +13,17 @@ invCont.buildByClassificationId = async function (req, res, next) {
   );
   const grid = await utilities.buildClassificationGrid(data);
   let nav = await utilities.getNav();
-  const className = data[0].classification_name;
+  const className = data[0]?.classification_name;
+  let message = null;
+  if (data.length === 0) {
+    message = "Sorry, no matching vehicles are available at this time.";
+  }
   res.render("./inventory/classification", {
-    title: className + " vehicles",
+    title: className ? className + " vehicles" : "No vehicles",
     nav,
     grid,
     errors: null,
+    message,
   });
 };
 
@@ -299,6 +304,58 @@ invCont.approveInventoryView = async function (req, res, next) {
     invPending,
     errors: null,
   });
+};
+
+/* ***************************
+ *  Approve Inventory
+ * ************************** */
+invCont.approveClassification = async (req, res, next) => {
+  const classification_id = parseInt(req.params.classification_id);
+  const account_id = res.locals.accountData.account_id;
+  const approveResult = await invModel.approveClassification(
+    classification_id,
+    account_id
+  );
+  const pending = await utilities.buildApprovalGrid();
+  const invPending = await utilities.buildInvApprovalGrid();
+
+  if (approveResult) {
+    req.flash("notice", `The classification was successfully approved.`);
+    let nav = await utilities.getNav();
+    res.render("./inventory/approve", {
+      title: "Manage Inventory Approvals",
+      nav,
+      pending,
+      invPending,
+      errors: null,
+    });
+  } else {
+    req.flash("notice", "Sorry, the process failed. Please try again.");
+    res.status(501).redirect("/inv/approve");
+  }
+};
+
+invCont.approveInventory = async (req, res, next) => {
+  const inv_id = parseInt(req.params.inv_id);
+  const account_id = res.locals.accountData.account_id;
+  const approveInvResult = await invModel.approveInventory(inv_id, account_id);
+  const pending = await utilities.buildApprovalGrid();
+  const invPending = await utilities.buildInvApprovalGrid();
+
+  if (approveInvResult) {
+    req.flash("notice", `The inventory item was successfully approved.`);
+    let nav = await utilities.getNav();
+    res.render("./inventory/approve", {
+      title: "Manage Inventory Approvals",
+      nav,
+      pending,
+      invPending,
+      errors: null,
+    });
+  } else {
+    req.flash("notice", "Sorry, the process failed. Please try again.");
+    res.status(501).redirect("/inv/approve");
+  }
 };
 
 module.exports = invCont;

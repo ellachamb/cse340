@@ -25,10 +25,12 @@ router.get(
 );
 router.get(
   "/add-inventory",
+  utilities.checkAccountType,
   utilities.handleErrors(invController.buildAddInventory)
 );
 router.get(
   "/add-classification",
+  utilities.checkAccountType,
   utilities.handleErrors(invController.buildAddClassification)
 );
 
@@ -67,14 +69,28 @@ router.post(
 
 router.get(
   "/delete/:inv_id",
+  utilities.checkAccountType,
   utilities.handleErrors(invController.deleteInventoryView)
 );
 
 router.post("/delete/", utilities.handleErrors(invController.deleteInventory));
 
 router.get(
-  "/approve",
+  "/approve/",
+  utilities.checkAccountTypeForApprovals,
   utilities.handleErrors(invController.approveInventoryView)
+);
+
+router.get(
+  "/approve/:classification_id",
+  utilities.checkAccountTypeForApprovals,
+  utilities.handleErrors(invController.approveClassification)
+);
+
+router.get(
+  "/approveInv/:inv_id",
+  utilities.checkAccountTypeForApprovals,
+  utilities.handleErrors(invController.approveInventory)
 );
 
 module.exports = router;
