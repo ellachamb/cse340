@@ -247,7 +247,7 @@ Util.checkAccountType = (req, res, next) => {
     next();
   } else {
     req.flash("notice", "You do not have permission to view this page.");
-    return res.redirect("/");
+    return res.redirect("/account/login");
   }
 };
 
@@ -256,7 +256,7 @@ Util.checkAccountTypeForApprovals = (req, res, next) => {
     next();
   } else {
     req.flash("notice", "You do not have permission to view this page.");
-    return res.redirect("/");
+    return res.redirect("/account/login");
   }
 };
 
